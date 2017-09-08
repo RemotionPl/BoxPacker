@@ -1,6 +1,12 @@
 language: php
 sudo: false
 
+env:
+php:
+  - 7.1
+  - 7.2
+  - nightly
+
 matrix:
   include:
     - php: hhvm
@@ -9,10 +15,11 @@ matrix:
        - docker
     - php: 7.1
       env: lowest=1
-    - php: 7.2
-    - php: nightly
     - php: 7.1
       env: code_coverage=1
+  allow_failures:
+    - php: nightly
+    - php: hhvm
 
 cache:
   directories:
