@@ -78,9 +78,9 @@ class OrientatedItemFactory implements LoggerAwareInterface
     public function getPossibleOrientations(
         Item $item,
         ?PackedItem $prevItem,
-        int $widthLeft,
-        int $lengthLeft,
-        int $depthLeft
+         $widthLeft,
+         $lengthLeft,
+         $depthLeft
     ) {
 
         $orientations = [];
@@ -91,9 +91,13 @@ class OrientatedItemFactory implements LoggerAwareInterface
             $orientations[] = new OrientatedItem($item, $prevItem->getWidth(), $prevItem->getLength(), $prevItem->getDepth());
         } else {
 
-            //simple 2D rotation
+            //initial orientation by default
             $orientations[] = new OrientatedItem($item, $item->getWidth(), $item->getLength(), $item->getDepth());
-            $orientations[] = new OrientatedItem($item, $item->getLength(), $item->getWidth(), $item->getDepth());
+
+            //simple 2D rotation
+            if (!$item->isKeepFixed()) {
+                $orientations[] = new OrientatedItem($item, $item->getLength(), $item->getWidth(), $item->getDepth());
+            }
 
             //add 3D rotation if we're allowed
             if (!$item->getKeepFlat()) {

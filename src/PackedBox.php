@@ -168,6 +168,13 @@ class PackedBox
      */
     public function getVolumeUtilisation()
     {
+        $itemVolume = $this->getUsedVolume();
+
+        return round($itemVolume / $this->getInnerVolume() * 100, 1);
+    }
+
+    public function getUsedVolume()
+    {
         $itemVolume = 0;
 
         /** @var PackedItem $item */
@@ -175,7 +182,7 @@ class PackedBox
             $itemVolume += ($item->getItem()->getWidth() * $item->getItem()->getLength() * $item->getItem()->getDepth());
         }
 
-        return round($itemVolume / $this->getInnerVolume() * 100, 1);
+        return $itemVolume;
     }
 
 

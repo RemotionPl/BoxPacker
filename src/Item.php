@@ -51,5 +51,14 @@ interface Item
      */
     public function getKeepFlat();
 
+
+    /**
+     * Does this item need to be kept as put / can't be rotated?
+     * @return bool
+     */
+    public function isKeepFixed();
+
+
+
 }
 
