@@ -4,7 +4,7 @@
  * @package BoxPacker
  * @author Doug Wright
  */
-declare(strict_types=1);
+
 namespace DVDoug\BoxPacker;
 
 /**
@@ -24,7 +24,7 @@ interface ConstrainedItem extends Item
      *
      * @return bool
      */
-    public function canBePackedInBox(PackedItemList $alreadyPackedItems, Box $box): bool;
+    public function canBePackedInBox(PackedItemList $alreadyPackedItems, Box $box);
 
 }
 

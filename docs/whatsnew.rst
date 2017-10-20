@@ -69,7 +69,7 @@ After
         /**
          * @return string
          */
-        public function getDescription(): string
+        public function getDescription()
         {
             return $this->description;
         }

@@ -4,7 +4,7 @@
  * @package BoxPacker
  * @author Doug Wright
  */
-declare(strict_types=1);
+
 namespace DVDoug\BoxPacker\Test;
 
 use DVDoug\BoxPacker\Box;
@@ -94,7 +94,7 @@ class TestBox implements Box
     /**
      * @return string
      */
-    public function getReference(): string
+    public function getReference()
     {
         return $this->reference;
     }
@@ -102,7 +102,7 @@ class TestBox implements Box
     /**
      * @return int
      */
-    public function getOuterWidth(): int
+    public function getOuterWidth()
     {
         return $this->outerWidth;
     }
@@ -110,7 +110,7 @@ class TestBox implements Box
     /**
      * @return int
      */
-    public function getOuterLength(): int
+    public function getOuterLength()
     {
         return $this->outerLength;
     }
@@ -118,7 +118,7 @@ class TestBox implements Box
     /**
      * @return int
      */
-    public function getOuterDepth(): int
+    public function getOuterDepth()
     {
         return $this->outerDepth;
     }
@@ -126,7 +126,7 @@ class TestBox implements Box
     /**
      * @return int
      */
-    public function getEmptyWeight(): int
+    public function getEmptyWeight()
     {
         return $this->emptyWeight;
     }
@@ -134,7 +134,7 @@ class TestBox implements Box
     /**
      * @return int
      */
-    public function getInnerWidth(): int
+    public function getInnerWidth()
     {
         return $this->innerWidth;
     }
@@ -142,7 +142,7 @@ class TestBox implements Box
     /**
      * @return int
      */
-    public function getInnerLength(): int
+    public function getInnerLength()
     {
         return $this->innerLength;
     }
@@ -150,7 +150,7 @@ class TestBox implements Box
     /**
      * @return int
      */
-    public function getInnerDepth(): int
+    public function getInnerDepth()
     {
         return $this->innerDepth;
     }
@@ -158,7 +158,7 @@ class TestBox implements Box
     /**
      * @return int
      */
-    public function getMaxWeight(): int
+    public function getMaxWeight()
     {
         return $this->maxWeight;
     }

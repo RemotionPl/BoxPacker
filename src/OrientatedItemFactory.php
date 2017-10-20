@@ -4,7 +4,7 @@
  * @package BoxPacker
  * @author Doug Wright
  */
-declare(strict_types=1);
+
 namespace DVDoug\BoxPacker;
 
 use Psr\Log\LoggerAwareInterface;
@@ -33,17 +33,17 @@ class OrientatedItemFactory implements LoggerAwareInterface
      * @param int $widthLeft
      * @param int $lengthLeft
      * @param int $depthLeft
-     * @return ?OrientatedItem
+     * @return OrientatedItem
      */
     public function getBestOrientation(
         Box $box,
         Item $item,
         ?PackedItem $prevItem,
-        bool $isLastItem,
-        int $widthLeft,
-        int $lengthLeft,
-        int $depthLeft
-    ): ?OrientatedItem {
+         $isLastItem,
+         $widthLeft,
+         $lengthLeft,
+         $depthLeft
+    ) {
 
         $possibleOrientations = $this->getPossibleOrientations($item, $prevItem, $widthLeft, $lengthLeft, $depthLeft);
         $usableOrientations = $this->getUsableOrientations($possibleOrientations, $box, $item, $isLastItem);
@@ -81,7 +81,7 @@ class OrientatedItemFactory implements LoggerAwareInterface
         int $widthLeft,
         int $lengthLeft,
         int $depthLeft
-    ): array {
+    ) {
 
         $orientations = [];
 
@@ -115,7 +115,7 @@ class OrientatedItemFactory implements LoggerAwareInterface
      * @param Box  $box
      * @return OrientatedItem[]
      */
-    public function getPossibleOrientationsInEmptyBox(Item $item, Box $box): array
+    public function getPossibleOrientationsInEmptyBox(Item $item, Box $box)
     {
         $cacheKey = $item->getWidth() .
             '|' .
@@ -159,7 +159,7 @@ class OrientatedItemFactory implements LoggerAwareInterface
         Box $box,
         Item $item,
         bool $isLastItem
-    ): array {
+    ) {
         /*
          * Divide possible orientations into stable (low centre of gravity) and unstable (high centre of gravity)
          */

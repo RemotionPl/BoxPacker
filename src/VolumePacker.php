@@ -4,7 +4,7 @@
  * @package BoxPacker
  * @author Doug Wright
  */
-declare(strict_types=1);
+
 namespace DVDoug\BoxPacker;
 
 use Psr\Log\LoggerAwareInterface;
@@ -90,7 +90,7 @@ class VolumePacker implements LoggerAwareInterface
      *
      * @return PackedBox packed box
      */
-    public function pack(): PackedBox
+    public function pack()
     {
         $this->logger->debug("[EVALUATING BOX] {$this->box->getReference()}");
 
@@ -183,16 +183,16 @@ class VolumePacker implements LoggerAwareInterface
      * @param int             $maxLength
      * @param int             $maxDepth
      *
-     * @return ?OrientatedItem
+     * @return
      */
     protected function getOrientationForItem(
         Item $itemToPack,
         ?PackedItem $prevItem,
-        bool $isLastItem,
-        int $maxWidth,
-        int $maxLength,
-        int $maxDepth
-    ): ?OrientatedItem {
+        $isLastItem,
+        $maxWidth,
+        $maxLength,
+        $maxDepth
+    )  {
         $this->logger->debug(
             "evaluating item {$itemToPack->getDescription()} for fit",
             [
@@ -228,13 +228,13 @@ class VolumePacker implements LoggerAwareInterface
     protected function tryAndStackItemsIntoSpace(
         PackedItemList $packedItems,
         ?PackedItem $prevItem,
-        int $maxWidth,
-        int $maxLength,
-        int $maxDepth,
-        int $x,
-        int $y,
-        int $z
-    ): void {
+        $maxWidth,
+        $maxLength,
+        $maxDepth,
+        $x,
+        $y,
+        $z
+    ) {
         while (!$this->items->isEmpty() && $this->checkNonDimensionalConstraints($this->items->top(), $packedItems)) {
             $stackedItem = $this->getOrientationForItem(
                 $this->items->top(),
@@ -267,7 +267,7 @@ class VolumePacker implements LoggerAwareInterface
     protected function checkConstraints(
         Item $itemToPack,
         PackedItemList $packedItems
-    ): bool {
+    ) {
         return $this->checkNonDimensionalConstraints($itemToPack, $packedItems) &&
                $this->checkDimensionalConstraints($itemToPack);
     }
@@ -281,7 +281,7 @@ class VolumePacker implements LoggerAwareInterface
      *
      * @return bool
      */
-    protected function checkNonDimensionalConstraints(Item $itemToPack, PackedItemList $packedItems): bool
+    protected function checkNonDimensionalConstraints(Item $itemToPack, PackedItemList $packedItems)
     {
         $weightOK = $itemToPack->getWeight() <= $this->remainingWeight;
 
@@ -299,7 +299,7 @@ class VolumePacker implements LoggerAwareInterface
      *
      * @return bool
      */
-    protected function checkDimensionalConstraints(Item $itemToPack): bool
+    protected function checkDimensionalConstraints(Item $itemToPack)
     {
         $orientatedItemFactory = new OrientatedItemFactory();
         $orientatedItemFactory->setLogger($this->logger);
@@ -309,7 +309,7 @@ class VolumePacker implements LoggerAwareInterface
     /**
      * Reintegrate skipped items into main list when nothing left to process
      */
-    protected function rebuildItemList(): void {
+    protected function rebuildItemList() {
         if ($this->items->isEmpty()) {
             $this->items = $this->skippedItems;
             $this->skippedItems = new ItemList();
@@ -321,7 +321,7 @@ class VolumePacker implements LoggerAwareInterface
      *
      * @return PackedBox
      */
-    protected function createPackedBox(PackedItemList $packedItems): PackedBox
+    protected function createPackedBox(PackedItemList $packedItems)
     {
         //if we rotated the box for packing, need to swap back width/length of the packed items
         if ($this->boxRotated) {

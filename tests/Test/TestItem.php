@@ -4,7 +4,7 @@
  * @package BoxPacker
  * @author Doug Wright
  */
-declare(strict_types=1);
+
 namespace DVDoug\BoxPacker\Test;
 
 use DVDoug\BoxPacker\Item;
@@ -70,7 +70,7 @@ class TestItem implements Item
     /**
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription()
     {
         return $this->description;
     }
@@ -78,7 +78,7 @@ class TestItem implements Item
     /**
      * @return int
      */
-    public function getWidth(): int
+    public function getWidth()
     {
         return $this->width;
     }
@@ -86,7 +86,7 @@ class TestItem implements Item
     /**
      * @return int
      */
-    public function getLength(): int
+    public function getLength()
     {
         return $this->length;
     }
@@ -94,7 +94,7 @@ class TestItem implements Item
     /**
      * @return int
      */
-    public function getDepth(): int
+    public function getDepth()
     {
         return $this->depth;
     }
@@ -102,7 +102,7 @@ class TestItem implements Item
     /**
      * @return int
      */
-    public function getWeight(): int
+    public function getWeight()
     {
         return $this->weight;
     }
@@ -110,7 +110,7 @@ class TestItem implements Item
     /**
      * @return bool
      */
-    public function getKeepFlat(): bool
+    public function getKeepFlat()
     {
         return $this->keepFlat;
     }

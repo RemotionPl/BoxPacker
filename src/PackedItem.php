@@ -4,7 +4,7 @@
  * @package BoxPacker
  * @author Doug Wright
  */
-declare(strict_types=1);
+
 namespace DVDoug\BoxPacker;
 
 /**
@@ -61,7 +61,7 @@ class PackedItem
      * @param int  $length
      * @param int  $depth
      */
-    public function __construct(Item $item, int $x, int $y, int $z, int $width, int $length, int $depth)
+    public function __construct(Item $item, $x, $y, $z, $width, $length, $depth)
     {
         $this->item = $item;
         $this->x = $x;
@@ -75,7 +75,7 @@ class PackedItem
     /**
      * @return int
      */
-    public function getX(): int
+    public function getX()
     {
         return $this->x;
     }
@@ -83,7 +83,7 @@ class PackedItem
     /**
      * @return int
      */
-    public function getY(): int
+    public function getY()
     {
         return $this->y;
     }
@@ -91,7 +91,7 @@ class PackedItem
     /**
      * @return int
      */
-    public function getZ(): int
+    public function getZ()
     {
         return $this->z;
     }
@@ -99,7 +99,7 @@ class PackedItem
     /**
      * @return Item
      */
-    public function getItem(): Item
+    public function getItem()
     {
         return $this->item;
     }
@@ -107,7 +107,7 @@ class PackedItem
     /**
      * @return int
      */
-    public function getWidth(): int
+    public function getWidth()
     {
         return $this->width;
     }
@@ -115,7 +115,7 @@ class PackedItem
     /**
      * @return int
      */
-    public function getLength(): int
+    public function getLength()
     {
         return $this->length;
     }
@@ -123,7 +123,7 @@ class PackedItem
     /**
      * @return int
      */
-    public function getDepth(): int
+    public function getDepth()
     {
         return $this->depth;
     }
@@ -137,7 +137,7 @@ class PackedItem
      *
      * @return PackedItem
      */
-    public static function fromOrientatedItem(OrientatedItem $orientatedItem, int $x, int $y, int $z): PackedItem
+    public static function fromOrientatedItem(OrientatedItem $orientatedItem, $x, $y, $z)
     {
         return new static(
             $orientatedItem->getItem(),

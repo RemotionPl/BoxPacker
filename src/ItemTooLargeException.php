@@ -5,7 +5,7 @@
  * @package BoxPacker
  * @author Doug Wright
  */
-declare(strict_types=1);
+
 namespace DVDoug\BoxPacker;
 
 /**
@@ -26,7 +26,7 @@ class ItemTooLargeException extends \RuntimeException
      * @param string $message
      * @param Item   $item
      */
-    public function __construct(string $message, Item $item) {
+    public function __construct($message, Item $item) {
         $this->item = $item;
         parent::__construct($message);
     }
@@ -34,7 +34,7 @@ class ItemTooLargeException extends \RuntimeException
     /**
      * @return Item
      */
-    public function getItem(): Item {
+    public function getItem() {
         return $this->item;
     }
 

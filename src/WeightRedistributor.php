@@ -4,7 +4,7 @@
  * @package BoxPacker
  * @author Doug Wright
  */
-declare(strict_types=1);
+
 namespace DVDoug\BoxPacker;
 
 use Psr\Log\LoggerAwareInterface;
@@ -45,7 +45,7 @@ class WeightRedistributor implements LoggerAwareInterface
      * @param PackedBoxList $originalBoxes
      * @return PackedBoxList
      */
-    public function redistributeWeight(PackedBoxList $originalBoxes): PackedBoxList
+    public function redistributeWeight(PackedBoxList $originalBoxes)
     {
 
         $targetWeight = $originalBoxes->getMeanWeight();
