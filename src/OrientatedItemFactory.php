@@ -28,7 +28,7 @@ class OrientatedItemFactory implements LoggerAwareInterface
      * Get the best orientation for an item
      * @param Box $box
      * @param Item $item
-     * @param ?PackedItem $prevItem
+     * @param $prevItem
      * @param bool $isLastItem
      * @param int $widthLeft
      * @param int $lengthLeft
@@ -38,7 +38,7 @@ class OrientatedItemFactory implements LoggerAwareInterface
     public function getBestOrientation(
         Box $box,
         Item $item,
-        ?PackedItem $prevItem,
+        $prevItem,
          $isLastItem,
          $widthLeft,
          $lengthLeft,
@@ -69,7 +69,7 @@ class OrientatedItemFactory implements LoggerAwareInterface
     /**
      * Find all possible orientations for an item
      * @param Item $item
-     * @param ?PackedItem $prevItem
+     * @param $prevItem
      * @param int $widthLeft
      * @param int $lengthLeft
      * @param int $depthLeft
@@ -77,7 +77,7 @@ class OrientatedItemFactory implements LoggerAwareInterface
      */
     public function getPossibleOrientations(
         Item $item,
-        ?PackedItem $prevItem,
+        $prevItem,
          $widthLeft,
          $lengthLeft,
          $depthLeft
@@ -162,7 +162,7 @@ class OrientatedItemFactory implements LoggerAwareInterface
         $possibleOrientations,
         Box $box,
         Item $item,
-        bool $isLastItem
+        $isLastItem
     ) {
         /*
          * Divide possible orientations into stable (low centre of gravity) and unstable (high centre of gravity)
